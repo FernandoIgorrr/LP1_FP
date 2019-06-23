@@ -1,6 +1,7 @@
 #ifndef TRATADOR_CLASS_H_INLCUDED
 #define TRATADOR_CLASS_H_INCLUDED
 
+#include "funcionario.class.h"
 /**
  *  @brief Classe Tratador que serve para representar os tratadores no software
  *  @author Fernando Igor Dantas
@@ -11,11 +12,18 @@
 class Tratador : public Funcionario{
 
 	private:
-		int m_nivel_de_segunraca;
+		int m_nivel_acesso;
 		
 	public:
-		virtual Tratador(){}
-		virtual ~Tratador() = 0;
+		Tratador(int	id,
+				 string	nome,
+				 string	cpf,
+				 short	idade,
+				 string	tipo_sanguineo,
+				 char	fator_rh,
+				 string	especialidade,
+				 int	nivel_acesso);
+		~Tratador();
 
 		
 

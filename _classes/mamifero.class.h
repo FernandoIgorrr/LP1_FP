@@ -16,12 +16,24 @@ using namespace std;
 class Mamifero: public Animal{
 
 	protected:
-		int m_cor_pelo;	
+		string m_cor_pelo;	
 	public:
-		Mamifero();
+		Mamifero(int 	_m_id, 
+				string 	_m_classe, 
+				string 	_m_nome_cientifico, 
+				string 	_m_nome_batismo,
+				char 	_m_sexo, 
+				double	_m_tamanho, 
+				string 	_m_dieta, 
+				int 	_m_veterinario, 
+				int 	_m_tratador,
+				bool 	_m_nativo,
+				string	_m_cor_pelo
+				);
+		
 		~Mamifero();
 
-		int getCorPelo();
+		string getCorPelo();
 
 };
 

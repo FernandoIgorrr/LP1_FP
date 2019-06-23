@@ -1,5 +1,6 @@
 #pragma once
- 
+
+#include "dados.class.h"
 #include <string>
 
 using namespace std;
@@ -11,18 +12,18 @@ using namespace std;
  *  @since 17-06-2019
  *  */
 
-class Animal{
+class Animal: public Dados{
 
 	protected:
 		int				m_id;
 		string			m_classe;
 		string			m_nome_cientifico;
+		string			m_nome_batismo;
 		char			m_sexo;
 		double			m_tamanho;
 		string			m_dieta;
 		int				m_veterinario;
 		int				m_tratador;
-		string			m_nome_batismo;
 		bool			m_nativo;
 
 	public:
@@ -41,7 +42,7 @@ class Animal{
 		*/
 		virtual ~Animal() = 0;
 
-		int		getID();
+		int		getId();
 		string	getClasse();
 		string	getNomeCientifico();
 		char	getSexo();
@@ -52,7 +53,7 @@ class Animal{
 		string	getNomeBatismo();
 		bool	getNativo();
 
-		void	setID(int id);
+		void	setId(int id);
 		void	setClasse(string classe);
 		void	setNomeCientifico(string nome_cientifico);
 		void	setSexo(char sexo);
@@ -62,5 +63,7 @@ class Animal{
 		void	setTratadorId(int tratador_id);
 		void	setNomeBatismo(string nome_batismo);
 		void	setNativo(bool nativo);
+
+		//void 	vsToClass(vector<string> linha);
 
 };

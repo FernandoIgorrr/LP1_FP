@@ -36,7 +36,7 @@ Animal::~Animal(){
 * Funções GET
 *	*/
 
-int Animal::getID(){
+int Animal::getId(){
 	return this->m_id;
 }
 
@@ -80,7 +80,7 @@ bool Animal::getNativo(){
 * Funções SET
 *	*/
 
-void Animal::setID(int id){
+void Animal::setId(int id){
 	this->m_id = id;
 }
 
@@ -119,3 +119,58 @@ void Animal::setNomeBatismo(string nome_batismo){
 void Animal::setNativo(bool nativo){
 	this->m_nativo = nativo;
 }
+
+/*void Animal::vsToClass(vector<string> linha){
+	
+	int		id;
+	string	classe;
+	string	nome_cientifico;
+	string	nome_batismo;
+	char	sexo;
+	double	tamanho;
+	string	dieta;
+	int		veterinario;
+	int		tratador;
+	bool	nativo;
+
+	stringstream _id(linha[0]);
+	_id 			>> id;
+
+	classe 			= linha[1];
+	nome_cientifico = linha[2];
+	nome_batismo 	= linha[3];
+
+	sexo 			= linha[4].at(0);
+
+	stringstream _tamhno(linha[5]);
+	_tamnho 		>> tamnho;
+
+	dieta 			= linha[6];
+
+	stringstream _veterinario(linha[7]);
+	_veterinario 		>> veterinario;
+
+	stringstream _tratador(linha[8]);
+	_tratador 			>> tratador;
+
+	try{
+		nativo = boost::lexical_cast<bool>(linha[9]);
+	}
+	catch(boost::bad_lexical_cast const &e){
+		nativo = false;
+	}
+
+	Animal *a = new animal 	(	id,
+								classe,
+								nome_cientifico,
+								nome_batismo,
+								sexo,
+								tamahno,
+								dieta,
+								veterinario,
+								tratador,
+								nativo
+							);
+
+	this->_dados_gerais.inser(pair<string,Animal>(linha[1],*(a)));
+}*/

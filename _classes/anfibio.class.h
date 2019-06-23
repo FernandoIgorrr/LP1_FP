@@ -2,7 +2,7 @@
 #define ANFIBIO_CLASS_H_INCLUDED
  
 #include "animal.class.h"
-#include "Data.class.h"
+#include "../_structs/data.struct.h"
 #include <string>
 
 using namespace std;
@@ -18,16 +18,30 @@ class Anfibio: public Animal{
 
 	protected:
 		int		m_total_mudas;
-		Data 	m_ultima_muda;
+		myDate 	m_ultima_muda;
 	public:
-		Anfibio();
-		//Anfibio(int _m_total_mudas, myDate _m_ultima_muda);
+		Anfibio(int 	_m_id, 
+				string 	_m_classe, 
+				string 	_m_nome_cientifico, 
+				string 	_m_nome_batismo,
+				char 	_m_sexo, 
+				double	_m_tamanho, 
+				string 	_m_dieta, 
+				int 	_m_veterinario, 
+				int 	_m_tratador,  
+				bool 	_m_nativo,
+				int		_m_total_mudas, 
+				myDate 	_m_ultima_muda
+				);
+
 		~Anfibio();
 
 		int		getTotalMudas();
 		myDate	getUltimaMuda();
 
-		void setUltimaMuda(Data data);
+		void setUltimaMuda(myDate data);
+
+		void vsToClass(vector<string> linha);
 
 };
 
