@@ -1,12 +1,15 @@
 PROG	= main
 CC		= g++
 FLAGS	= -O0 -g -Wall
-OBJS	= main.o dados.class.o animal.class.o funcionario.class.o anfibio.class.o ave.class.o mamifero.class.o reptil.class.o veterinario.class.o tratador.class.o data.struct.o
+OBJS	= main.o command.class.o dados.class.o animal.class.o funcionario.class.o anfibio.class.o ave.class.o mamifero.class.o reptil.class.o veterinario.class.o tratador.class.o data.struct.o
 
 $(PROG):$(OBJS)
 	$(CC) -o $(PROG) $(OBJS)
 main.o:
 	$(CC) $(FLAGS) -c main.cpp
+
+command.class.o: _classes/command.class.h
+	$(CC) $(FLAGS) -c _classes/command.class.cpp
 
 dados.class.o: _classes/dados.class.h
 	$(CC) $(FLAGS) -c _classes/dados.class.cpp

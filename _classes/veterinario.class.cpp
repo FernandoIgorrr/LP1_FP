@@ -1,5 +1,10 @@
 #include "veterinario.class.h"
 
+Veterinario::Veterinario(){
+	vector<string> atributos = {"Id","Nome","CPF","Idade","Tipo sanguíneo","Fator RH","Especialidade","CMV"};
+	this->setAtributos(atributos);
+}
+
 Veterinario::Veterinario(	int		id,
 							string	nome,
 							string	cpf,

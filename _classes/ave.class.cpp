@@ -4,6 +4,11 @@
 * Funções GET
 *	*/
 
+Ave::Ave(){
+	vector<string> atributos = {"Id","Classe","Nome científico","Nome de batismo","Sexo","Tamanho","Dieta","Veterinário","Tratador","Nativo","Tamanho do bico(CM)","Envergadura das asas"};
+	this->setAtributos(atributos);
+}
+
 Ave::Ave(int 	_m_id, 
 		string 	_m_classe, 
 		string 	_m_nome_cientifico,

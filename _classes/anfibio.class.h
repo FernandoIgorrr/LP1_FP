@@ -20,6 +20,9 @@ class Anfibio: public Animal{
 		int		m_total_mudas;
 		myDate 	m_ultima_muda;
 	public:
+
+		Anfibio();
+
 		Anfibio(int 	_m_id, 
 				string 	_m_classe, 
 				string 	_m_nome_cientifico, 
@@ -35,9 +38,11 @@ class Anfibio: public Animal{
 				);
 
 		~Anfibio();
+		
+		void Insert(Anfibio a);
 
-		int		getTotalMudas();
-		myDate	getUltimaMuda();
+		int				getTotalMudas();
+		myDate			getUltimaMuda();
 
 		void setUltimaMuda(myDate data);
 

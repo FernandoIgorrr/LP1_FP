@@ -1,5 +1,9 @@
 #include "tratador.class.h"
 
+Tratador::Tratador(){
+	vector<string> atributos = {"Id","Nome","CPF","Idade","Tipo sanguíneo","Fator RH","Especialidade","Níve de acesso"};
+	this->setAtributos(atributos);
+}
 Tratador::Tratador(	int		id,
 					string	nome,
 					string	cpf,

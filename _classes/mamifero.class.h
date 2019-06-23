@@ -18,6 +18,9 @@ class Mamifero: public Animal{
 	protected:
 		string m_cor_pelo;	
 	public:
+
+		Mamifero();
+
 		Mamifero(int 	_m_id, 
 				string 	_m_classe, 
 				string 	_m_nome_cientifico, 
@@ -32,8 +35,8 @@ class Mamifero: public Animal{
 				);
 		
 		~Mamifero();
-
-		string getCorPelo();
+		
+		string 			getCorPelo();
 
 };
 

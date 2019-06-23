@@ -1,5 +1,10 @@
 #include "reptil.class.h"
 
+Reptil::Reptil(){
+	vector<string> atributos = {"Id","Classe","Nome científico","Nome de batismo","Sexo","Tamanho","Dieta","Veterinário","Tratador","Nativo","Venenoso","Tipo do veneno"};
+	this->setAtributos(atributos);
+}
+
 Reptil::Reptil(	int 	_m_id, 
 				string 	_m_classe, 
 				string 	_m_nome_cientifico,

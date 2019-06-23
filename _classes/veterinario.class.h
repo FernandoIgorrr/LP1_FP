@@ -16,6 +16,7 @@ class Veterinario : public Funcionario{
 		string m_cmv;
 		
 	public:
+		Veterinario();
 		Veterinario(int		id,
 					string	nome,
 					string	cpf,

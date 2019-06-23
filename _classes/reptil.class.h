@@ -19,6 +19,9 @@ class Reptil: public Animal{
 		bool 	m_venenoso;
 		string	m_tipo_veneno;	
 	public:
+
+		Reptil();
+			
 		Reptil(	int 	_m_id, 
 				string 	_m_classe, 
 				string 	_m_nome_cientifico,
@@ -33,9 +36,9 @@ class Reptil: public Animal{
 				string	_m_tipo_veneno
 				);
 		~Reptil();
-
-		bool 	getVenenoso();
-		string 	getTipoVeneno();
+		
+		bool 			getVenenoso();
+		string 			getTipoVeneno();
 
 };
 

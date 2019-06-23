@@ -3,6 +3,12 @@
 /**
 * Funções GET
 *	*/
+
+Anfibio::Anfibio(){
+	vector<string> atributos = {"Id","Classe","Nome científico","Nome de batismo","Sexo","Tamanho","Dieta","Veterinário","Tratador","Nativo","Total de mudas","Data da última muda"};
+	this->setAtributos(m_atributos);
+}
+
 Anfibio::Anfibio(int 	_m_id, 
 				string 	_m_classe, 
 				string 	_m_nome_cientifico,
@@ -35,6 +41,11 @@ Anfibio::~Anfibio(){
 
 }
 
+
+void Anfibio::Insert(Anfibio a){
+	cout << a.getId() << "|" a.getNome() << "\n";
+}
+
 /*Anfibio::Anfibio(int _m_total_mudas, myDate _m_ultima_muda){
 	this->m_total_mudas = _m_total_mudas;
 	this->m_ultima_muda = _m_ultima_muda;
@@ -47,7 +58,6 @@ int Anfibio::getTotalMudas(){
 myDate Anfibio::getUltimaMuda(){
 	return this->m_ultima_muda;
 }
-
 
 void Anfibio::setUltimaMuda(myDate data){
 	this->m_ultima_muda = data;

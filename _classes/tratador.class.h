@@ -15,6 +15,7 @@ class Tratador : public Funcionario{
 		int m_nivel_acesso;
 		
 	public:
+		Tratador();
 		Tratador(int	id,
 				 string	nome,
 				 string	cpf,

@@ -19,6 +19,9 @@ class Ave: public Animal{
 		double m_tamanho_bico_cm;
 		double m_envergadura_asas;	
 	public:
+
+		Ave();
+			
 		Ave(int 	_m_id, 
 			string 	_m_classe, 
 			string 	_m_nome_cientifico, 
@@ -34,8 +37,8 @@ class Ave: public Animal{
 			);
 		~Ave();
 
-		double	getTamanhoBico();
-		double	getEnvergaduraAsas();
+		double			getTamanhoBico();
+		double			getEnvergaduraAsas();
 
 };
 

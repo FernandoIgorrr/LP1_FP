@@ -5,26 +5,29 @@
 #include "_classes/reptil.class.h"
 #include "_classes/veterinario.class.h"
 #include "_classes/tratador.class.h"
+#include "_classes/command.class.h"
 
 
 using namespace std;
 
 int main(){
 
-	myDate data;
-	
-	data.dia = 11;
-	data.mes = 11;
-	data.ano = 2011;
+	Command *tuto = new Command();
+	tuto->man();
 
-	Tratador *tra = new Tratador(123213,"Fernando","sdfsdf",32,"AB",'+',"SLA",1);
+	string command = "man";  
+    int i = command.compare("quit");
 
-	Anfibio *anf = new Anfibio(1,"Anfíbio","Anfibala","nenen",'M',2.32,"CARNE",0,0,0,10,data);
-
-	anf->makeList("animais",17);
-	tra->makeList("funcionarios",9);
-	tra->showList("Tratador");
-	//anf->showList("Mamífero");
+     while(i){
+     
+        setbuf(stdin, NULL);
+         cout << "->";  
+         getline(cin,command);
+         Command *c = new Command(command);
+         c->getCommand();
+         i   = command.compare("quit");
+          
+     }
 
 	return 0;
 }
