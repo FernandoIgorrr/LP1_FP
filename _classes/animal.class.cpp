@@ -1,36 +1,21 @@
 #include "animal.class.h"
 
 Animal::Animal(){
-
+	this->m_atributos.push_back("Id");
+	this->m_atributos.push_back("Classe");
+	this->m_atributos.push_back("Nome científico");
+	this->m_atributos.push_back("Nome de batismo");
+	this->m_atributos.push_back("Sexo");
+	this->m_atributos.push_back("Tamanho");
+	this->m_atributos.push_back("Dieta");
+	this->m_atributos.push_back("Veterinário");
+	this->m_atributos.push_back("Tratador");
+	this->m_atributos.push_back("Nativo");
 }
 
 Animal::~Animal(){
 
 }
-
-/*Animal::Animal(	int 	_m_id, 
-				string 	_m_classe, 
-				string 	_m_nome_cientifico, 
-				char 	_m_sexo, 
-				double	_m_tamanho, 
-				string 	_m_dieta, 
-				int 	_m_veterinario, 
-				int 	_m_tratador, 
-				string 	_m_nome_batismo, 
-				bool 	_m_nativo
-				){
-	this->m_id 				= _m_id; 
-	this->m_classe 			= _m_classe; 
-	this->m_nome_cientifico	= _m_nome_cientifico; 
-	this->m_sexo 			= _m_sexo;
-	this->m_tamanho			= _m_tamanho; 
-	this->m_dieta			= _m_dieta;
-	this->m_veterinario		= _m_veterinario; 
-	this->m_tratador		= _m_tratador;
-	this->m_nome_batismo	= _m_nome_batismo; 
-	this->m_nativo 			= _m_nativo;
-}
-*/
 
 /**
 * Funções GET
@@ -174,3 +159,35 @@ void Animal::setNativo(bool nativo){
 
 	this->_dados_gerais.inser(pair<string,Animal>(linha[1],*(a)));
 }*/
+
+bool Animal::toNativo(string dado){
+	if(!dado.compare("s") || !dado.compare("sim")){
+		return true;
+	}
+	return false;
+}
+
+bool Animal::validaNativo(string dado){
+	if(!dado.compare("s") || !dado.compare("n") || !dado.compare("sim") || !dado.compare("nao") || !dado.compare("não")){	
+		return true;
+	}
+	return false;
+}
+
+bool Animal::validaClasse(string dado){
+	if(!dado.compare("Anfíbio") || !dado.compare("Ave") || !dado.compare("Mamífero") || !dado.compare("Réptil")){
+		return true;
+	}
+	return false;
+}
+
+bool Animal::validaSexo(string dado){
+	if(dado.size() < 1){
+		return false;
+	}
+	if(dado.at(0) == 'M' || dado.at(0) == 'F'){
+		return true;
+	}
+	return false;
+}
+

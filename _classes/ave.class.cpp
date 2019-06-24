@@ -5,8 +5,8 @@
 *	*/
 
 Ave::Ave(){
-	vector<string> atributos = {"Id","Classe","Nome científico","Nome de batismo","Sexo","Tamanho","Dieta","Veterinário","Tratador","Nativo","Tamanho do bico(CM)","Envergadura das asas"};
-	this->setAtributos(atributos);
+	this->m_atributos.push_back("Tamanho do bico(CM)");
+	this->m_atributos.push_back("Envergadura das asas");
 }
 
 Ave::Ave(int 	_m_id, 

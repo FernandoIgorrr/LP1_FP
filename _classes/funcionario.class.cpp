@@ -1,7 +1,13 @@
 #include "funcionario.class.h"
 
 Funcionario::Funcionario(){
-	
+	this->m_atributos.push_back("Id");
+	this->m_atributos.push_back("Nome");
+	this->m_atributos.push_back("CPF");
+	this->m_atributos.push_back("Idade");
+	this->m_atributos.push_back("Tipo sanguíneo");
+	this->m_atributos.push_back("Fator RH");
+	this->m_atributos.push_back("Especialidade");
 }
 
 Funcionario::~Funcionario(){

@@ -39,14 +39,21 @@ class Anfibio: public Animal{
 
 		~Anfibio();
 		
-		void Insert(Anfibio a);
+		void 	Insert(Anfibio *a);
 
-		int				getTotalMudas();
-		myDate			getUltimaMuda();
+		void 	showDate();
 
-		void setUltimaMuda(myDate data);
+		void	lerAtributos();
 
-		void vsToClass(vector<string> linha);
+		int		getTotalMudas();
+
+		bool	validaData(myDate data);
+		myDate	getUltimaMuda();
+		string	dateString(myDate data);
+
+		void 	setUltimaMuda(myDate data);
+
+		void 	vsToClass(vector<string> linha);
 
 };
 

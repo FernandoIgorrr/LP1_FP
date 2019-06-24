@@ -14,19 +14,18 @@ int main(){
 
 	Command *tuto = new Command();
 	tuto->man();
-
+	delete(tuto);
 	string command = "man";  
     int i = command.compare("quit");
 
-     while(i){
-     
-        setbuf(stdin, NULL);
-         cout << "->";  
-         getline(cin,command);
-         Command *c = new Command(command);
-         c->getCommand();
-         i   = command.compare("quit");
-          
+    while(i){
+    	setbuf(stdin, NULL);
+    	cout << "->";
+    	getline(cin,command);
+    	Command *c = new Command(command);
+    	c->getCommand();
+    	i   = command.compare("quit");
+    	delete(c);
      }
 
 	return 0;

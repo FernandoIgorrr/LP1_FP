@@ -1,8 +1,7 @@
 #include "veterinario.class.h"
 
 Veterinario::Veterinario(){
-	vector<string> atributos = {"Id","Nome","CPF","Idade","Tipo sanguíneo","Fator RH","Especialidade","CMV"};
-	this->setAtributos(atributos);
+	this->m_atributos.push_back("CMV");
 }
 
 Veterinario::Veterinario(	int		id,
@@ -26,4 +25,18 @@ Veterinario::Veterinario(	int		id,
 }
 Veterinario::~Veterinario(){
 
+}
+
+bool Veterinario::existeId(string dado){
+	this->makeList("funcionarios",10);
+	for(auto elem : this->m_dados){
+		if(!elem.first.compare("Veterinário")){
+			for(int i = 0; i < (int)elem.second.size();i++){
+				if(!dado.compare(elem.second[i][0])){
+					return true;
+				}
+			}
+		}
+	}
+	return false;
 }

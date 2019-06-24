@@ -1,6 +1,4 @@
-#ifndef TRATADOR_CLASS_H_INLCUDED
-#define TRATADOR_CLASS_H_INCLUDED
-
+#pragma once
 #include "funcionario.class.h"
 /**
  *  @brief Classe Tratador que serve para representar os tratadores no software
@@ -26,8 +24,8 @@ class Tratador : public Funcionario{
 				 int	nivel_acesso);
 		~Tratador();
 
+		bool existeId(string dado);
+
 		
 
 };
-
-#endif

@@ -1,5 +1,4 @@
-#ifndef VETERINARIO_CLASS_H_INLCUDED
-#define VETERINARIO_CLASS_H_INCLUDED
+#pragma once
 
 #include "funcionario.class.h"
 
@@ -28,8 +27,8 @@ class Veterinario : public Funcionario{
 		
 		~Veterinario();
 
+		bool existeId(string dado);
+
 		
 
 };
-
-#endif

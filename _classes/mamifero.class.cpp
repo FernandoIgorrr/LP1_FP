@@ -1,8 +1,7 @@
 #include "mamifero.class.h"
 
 Mamifero::Mamifero(){
-	vector<string> atributos = {"Id","Classe","Nome científico","Nome de batismo","Sexo","Tamanho","Dieta","Veterinário","Tratador","Nativo","Cor do pelo"};
-	this->setAtributos(atributos);
+	this->m_atributos.push_back("Cor do pelo");	
 }
 
 Mamifero::Mamifero(	int 	_m_id, 

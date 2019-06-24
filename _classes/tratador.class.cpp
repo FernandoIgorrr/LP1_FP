@@ -1,8 +1,7 @@
 #include "tratador.class.h"
 
 Tratador::Tratador(){
-	vector<string> atributos = {"Id","Nome","CPF","Idade","Tipo sanguíneo","Fator RH","Especialidade","Níve de acesso"};
-	this->setAtributos(atributos);
+	this->m_atributos.push_back("Nível de acesso");
 }
 Tratador::Tratador(	int		id,
 					string	nome,
@@ -24,4 +23,18 @@ Tratador::Tratador(	int		id,
 }
 Tratador::~Tratador(){
 	
+}
+
+bool Tratador::existeId(string dado){
+	this->makeList("funcionarios",10);
+	for(auto elem : this->m_dados){
+		if(!elem.first.compare("Tratador")){
+			for(int i = 0; i < (int)elem.second.size();i++){
+				if(!dado.compare(elem.second[i][0])){
+					return true;
+				}
+			}
+		}
+	}
+	return false;
 }

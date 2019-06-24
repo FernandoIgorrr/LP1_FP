@@ -54,22 +54,22 @@ void Command::errorHandling(int error){
 		cout << "Você não digitou nada ¯\\_(ツ)_/¯\n" ;
 	}
 	else if(error == -3){
-		cout << "Esse nome de empresa já existe, OLHA O PROCESSO EM!!!\n" ;
+		cout << "Tipo de funcionário não encontrado!\n" ;
 	}
 	else if(error == -4){
-		cout << "já existe uma empresa com esse CNPJ!\n" ;	
+		cout << "Classe de animal não encontrada!\n" ;	
 	}
 	else if(error == -5){
-		cout << "Você não quis dizer \"show companies\"?!\n" ;	
+		cout << "TESTESTESTESTES\n" ;	
 	}
 	else if(error == -6){
-		cout << "Nenhuma empresa com este nome!\n" ;	
+		cout << "\n" ;	
 	}
 	else if(error == -7){
-		cout << "Já existe um funcionário com esse ID!\n" ;	
+		cout << "\n" ;	
 	}
 	else if(error == -8){
-		cout << "Você não quis dizer \"list exp <nome da empresa>\"?!\n" ;	
+		cout << "\n" ;	
 	}
 
 }
@@ -92,8 +92,7 @@ int Command::validateCommand(){
 			}
 		}
 		else if(this->getNumWords() == 2){
-			if(this->getCommand()[0].compare("insert")  != 0 && this->getCommand()[0].compare("update")  != 0 && this->getCommand()[0].compare("delete")  != 0
-		    && this->getCommand()[0].compare("show")){
+			if(this->getCommand()[0].compare("show")){
 				return 0;
 			}
 			else{
@@ -101,7 +100,7 @@ int Command::validateCommand(){
 			}
 		}
 		else if(this->getNumWords() == 3){
-			if(this->getCommand()[0].compare("show")){
+			if(this->getCommand()[0].compare("insert")  != 0 && this->getCommand()[0].compare("update")  != 0 && this->getCommand()[0].compare("delete")  != 0 && this->getCommand()[0].compare("show")){
 				return 0;
 			}
 			else{
@@ -130,7 +129,7 @@ int Command::executeCommand(){
 		}
 	}
 	else if(this->getNumWords() == 2){
-		else if(!this->command[0].compare("show")){
+		if(!this->command[0].compare("show")){
 			if(!this->command[1].compare("funcionarios")){
 				Tratador 	*t 	= new Tratador();
 				Veterinario *v 	= new Veterinario();
@@ -179,13 +178,40 @@ int Command::executeCommand(){
 	else if(this->getNumWords() == 3){
 		if(!this->command[0].compare("insert")){
 			if(!this->command[1].compare("funcionario")){
-
+				if(!this->command[2].compare("Veterinário")){
+				
+				}
+				else if(!this->command[2].compare("Tratador")){
+				
+				}
+				else{
+					return -3;
+				}
 			}
 			else if(!this->command[1].compare("animal")){
-
+				if(!this->command[2].compare("Anfíbio")){
+					
+					Anfibio *a = new Anfibio();
+					a->lerAtributos();
+					a->Insert(a);
+					delete(a);
+					return 1;
+				}
+				else if(!this->command[2].compare("Ave")){
+				
+				}
+				else if(!this->command[2].compare("Mamífero")){
+				
+				}
+				else if(!this->command[2].compare("Réptil")){
+				
+				}
+				else{
+					return -4;
+				}
 			}
 			else{
-
+				return -5;
 			}
 		}
 		else if(!this->command[0].compare("delete")){
@@ -210,10 +236,7 @@ int Command::executeCommand(){
 
 			}
 		}
-
-
-
-		if(!this->command[0].compare("show")){
+		else if(!this->command[0].compare("show")){
 			if(!this->command[1].compare("funcionarios")){
 				if(!this->command[2].compare("Tratador")){
 					Tratador 	*t 	= new Tratador();
@@ -310,9 +333,9 @@ void Command::man(void){
 	cout << "#	insert funcionario <filtro>				- Insere o cadastro de um novo funcionário		 #\n";
 	cout << "#	delete funcionario <Id>	        			- Deleta o cadastro de um funcionário 	 		 #\n";
 	cout << "#	update funcionario <Id>	        			- Altera o cadastro de um funcionário 			 #\n";
-	cout << "#	insert animal <filtro>  					- Insere um novo animal 				 #\n";
-	cout << "#	delete animal <Id>						- Deleta o cadastro de um animal 	 		 #\n";
-	cout << "#	update animal <Id>						- Altera o cadastro de um animal			 #\n";
+	cout << "#	insert animal <filtro>  				- Insere um novo animal 				 #\n";
+	cout << "#	delete animal <Id>					- Deleta o cadastro de um animal 	 	 	 #\n";
+	cout << "#	update animal <Id>					- Altera o cadastro de um animal		 	 #\n";
 	cout << "##########################################################################################################################\n";
 	cout << "#	filtros	funcionários					- Tratador, Veterinário					 #\n";
 	cout << "#	filtros	animais						- Anfíbio, Ave, Mamífero, Réptil			 #\n";

@@ -7,22 +7,42 @@ Dados::Dados(){
 Dados::~Dados(){
 
 }
-template<class Class>
-void Dados::Insert(Class *c){
 
+bool Dados::stob(string dado){
+	try{
+		boost::lexical_cast<bool>(dado);
+		return true;
+	}
+	catch(boost::bad_lexical_cast const &e){
+		return false;
+	}
+}
+
+bool Dados::is_fp(string dado){
+	try{
+		stod(dado);
+		return true;
+	}
+	catch(exception& e){
+		return false;
+	}
+}
+
+bool Dados::is_number(const std::string& s){
+
+    std::string::const_iterator it = s.begin();
+    while (it != s.end() && std::isdigit(*it)) ++it;
+    return !s.empty() && it == s.end();
 }
 
 vector<string> Dados::getAtributos(){
 	return this->m_atributos;
 }
 
-map<string,vector<vector<string>>> Dados::getDadosGerais(){
-	return this->m_dados_gerais;
+map<string,vector<vector<string>>> Dados::getDados(){
+	return this->m_dados;
 }
 
-void Dados::setAtributos(vector<string> atributos){
-	this->m_atributos = atributos;
-}
 void Dados::makeList(string classe_base, int numero_campos){
 
 	ifstream arqDados("_dados/"+classe_base+".csv");
@@ -41,7 +61,7 @@ void Dados::makeList(string classe_base, int numero_campos){
 	}
 	else{
 
-		this->m_dados_gerais.clear();
+		this->m_dados.clear();
 
 		vector<string> linha;
 		string aux;
@@ -57,12 +77,12 @@ void Dados::makeList(string classe_base, int numero_campos){
 				linha.push_back(aux);
 				aux.clear();
 			}			
-			if(this->m_dados_gerais.find(linha[1]) == this->m_dados_gerais.end()){
+			if(this->m_dados.find(linha[1]) == this->m_dados.end()){
 				vector<vector<string>> v_aux;
-				this->m_dados_gerais.insert(pair<string,vector<vector<string>>>(linha[1],v_aux));
+				this->m_dados.insert(pair<string,vector<vector<string>>>(linha[1],v_aux));
 			}
 			
-			this->m_dados_gerais[linha[1]].push_back(linha); 
+			this->m_dados[linha[1]].push_back(linha); 
 			
 			linha.clear();
 		}
@@ -70,7 +90,7 @@ void Dados::makeList(string classe_base, int numero_campos){
 	}
 }
 void Dados::showList(string m_class){
-	for(auto elem : this->getDadosGerais()){
+	for(auto elem : this->m_dados){
 		if(!m_class.compare(elem.first)){
 			for(int i = 0; i < (int)elem.second.size();i++){
 				int tamanho_total = 0;
@@ -142,7 +162,15 @@ void Dados::showList(string m_class){
 			}
 		}
 	}
+	this->m_dados.clear();
 }
+
+string Dados::bool_cast(const bool b) {
+    ostringstream ss;
+    ss << boolalpha << b;
+    return ss.str();
+}
+
 void Dados::showAtributos(){
 	int head = 0;
 	for(int i = 0; i < (int)this->getAtributos().size();i++){

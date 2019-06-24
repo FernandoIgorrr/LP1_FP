@@ -26,15 +26,15 @@ ave.class.o: _classes/ave.class.h
 mamifero.class.o: _classes/mamifero.class.h
 	$(CC) $(FLAGS) -c _classes/mamifero.class.cpp
 reptil.class.o: _classes/reptil.class.cpp
-	$(CC) $(FLGAS) -c _classes/reptil.class.cpp
+	$(CC) $(FLAGS) -c _classes/reptil.class.cpp
 
 veterinario.class.o: _classes/veterinario.class.cpp
-	$(CC) $(FLGAS) -c _classes/veterinario.class.cpp
+	$(CC) $(FLAGS) -c _classes/veterinario.class.cpp
 tratador.class.o: _classes/tratador.class.cpp
-	$(CC) $(FLGAS) -c _classes/tratador.class.cpp
+	$(CC) $(FLAGS) -c _classes/tratador.class.cpp
 
 data.struct.o: _structs/data.struct.cpp
-	$(CC) $(FLGAS) -c _structs/data.struct.cpp
+	$(CC) $(FLAGS) -c _structs/data.struct.cpp
 
 
 cls:
