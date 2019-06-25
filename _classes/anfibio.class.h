@@ -20,8 +20,14 @@ class Anfibio: public Animal<Anfibio>{
 		myDate 	m_ultima_muda;
 	public:
 
+
 		Anfibio();
 
+		/**
+		*
+		* @brief Construtor padrão
+		* @param Recebe os parâmetros para atribuir os valoures ao objeto Anfíbio
+		* */
 		Anfibio(int 	_m_id, 
 				string 	_m_classe, 
 				string 	_m_nome_cientifico, 

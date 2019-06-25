@@ -60,7 +60,7 @@ void Command::errorHandling(int error){
 		cout << "Classe de animal não encontrada!\n" ;	
 	}
 	else if(error == -5){
-		cout << "TESTESTESTESTES\n" ;	
+		cout << "\n" ;	
 	}
 	else if(error == -6){
 		cout << "\n" ;	
@@ -76,7 +76,7 @@ void Command::errorHandling(int error){
 
 int Command::validateCommand(){
 
-	if(this->getNumWords() > 3){
+	if(this->getNumWords() > 6){
 		return -1;
 	}
 	else{
@@ -105,6 +105,19 @@ int Command::validateCommand(){
 			}
 			else{
 				return 1;
+			}
+		}
+		else if(this->getNumWords() == 6){
+			if(this->getCommand()[0].compare("update")){
+				return 0;
+			}
+			else{
+				if(!this->getCommand()[1].compare("animal") || !this->getCommand()[1].compare("funcionario")){
+					return 1;
+				}
+				else{
+					return 0;
+				}
 			}
 		}
 		else{
@@ -327,6 +340,164 @@ int Command::executeCommand(){
 		return 0;		
 		}
 	}
+	else if(this->getNumWords() == 6){
+		if(!this->command[0].compare("update")){
+			if(!this->command[1].compare("animal")){
+				if(!this->command[2].compare("Anfíbio")){
+					Anfibio *an = new Anfibio();
+					for(int i = 0;i < (int)an->getAtributos().size();i++){
+						if(this->command[3].compare(an->getAtributos()[i])){
+							if(an->is_number(command[4])){
+								an->makeList("animais",17);
+								if(an->existeId(command[4])){
+									an->Update(an,"animais",command[4],i,17,command[5]);
+									delete(an);
+									return 1;
+								}
+								else{
+									delete(an);
+									return 0;
+								}
+							}
+							else{
+								return 0;
+							}
+						}
+					}
+					return 0;
+				}
+				else if(!this->command[2].compare("Ave")){
+					Ave *av = new Ave();
+					for(int i = 0;i < (int)av->getAtributos().size();i++){
+						if(this->command[3].compare(av->getAtributos()[i])){
+							if(av->is_number(command[4])){
+								av->makeList("animais",17);
+								if(av->existeId(command[4])){
+									av->Update(av,"animais",command[4],i,17,command[5]);
+									delete(av);
+									return 1;
+								}
+								else{
+									delete(av);
+									return 0;
+								}
+							}
+							else{
+								return 0;
+							}
+						}
+					}
+					return 0;
+				}
+				else if(!this->command[2].compare("Mamífero")){
+					Mamifero *ma = new Mamifero();
+					for(int i = 0;i < (int)ma->getAtributos().size();i++){
+						if(this->command[3].compare(ma->getAtributos()[i])){
+							if(ma->is_number(command[4])){
+								ma->makeList("animais",17);
+								if(ma->existeId(command[4])){
+									ma->Update(ma,"animais",command[4],i,17,command[5]);
+									delete(ma);
+									return 1;
+								}
+								else{
+									delete(ma);
+									return 0;
+								}
+							}
+							else{
+								return 0;
+							}
+						}
+					}
+					return 0;
+				}
+				else if(!this->command[2].compare("Réptil")){
+					Reptil *re = new Reptil();
+					for(int i = 0;i < (int)re->getAtributos().size();i++){
+						if(this->command[3].compare(re->getAtributos()[i])){
+							if(re->is_number(command[4])){
+								re->makeList("animais",17);
+								if(re->existeId(command[4])){
+									re->Update(re,"animais",command[4],i,17,command[5]);
+									delete(re);
+									return 1;
+								}
+								else{
+									delete(re);
+									return 0;
+								}
+							}
+							else{
+								return 0;
+							}
+						}
+					}
+					return 0;
+				}
+				else{
+					return 0;
+				}
+			}
+			else if(!this->command[1].compare("funcionario")){
+				if(!this->command[2].compare("Veterinário")){
+					Veterinario *ve = new Veterinario();
+					for(int i = 0;i < (int)ve->getAtributos().size();i++){
+						if(this->command[3].compare(ve->getAtributos()[i])){
+							if(ve->is_number(command[4])){
+								ve->makeList("funcionarios",10);
+								if(ve->existeId(command[4])){
+									ve->Update(ve,"funcionarios",command[4],i,10,command[5]);
+									delete(ve);
+									return 1;
+								}
+								else{
+									delete(ve);
+									return 0;
+								}
+							}
+							else{
+								return 0;
+							}
+						}
+					}
+					return 0;
+				}
+				else if(!this->command[2].compare("Tratador")){
+					Tratador *tr = new Tratador();
+					for(int i = 0;i < (int)tr->getAtributos().size();i++){
+						if(this->command[3].compare(tr->getAtributos()[i])){
+							if(tr->is_number(command[4])){
+								tr->makeList("funcionarios",10);
+								if(tr->existeId(command[4])){
+									tr->Update(tr,"funcionarios",command[4],i,10,command[5]);
+									delete(tr);
+									return 1;
+								}
+								else{
+									delete(tr);
+									return 0;
+								}
+							}
+							else{
+								return 0;
+							}
+						}
+					}
+					return 0;
+				}
+				else{
+					return 0;
+				}
+			}
+			else{
+				return 0;
+			}
+		}
+		else{
+			return 0;
+		}
+	}
 	return 0;
 }
 
@@ -364,10 +535,10 @@ void Command::man(void){
 	cout << "#	show animais <filtro>					- Mostra a lista com todos os dados dos animais		 #\n";
 	cout << "#	insert funcionario <filtro>				- Insere o cadastro de um novo funcionário		 #\n";
 	cout << "#	delete funcionario <Id>	        			- Deleta o cadastro de um funcionário 	 		 #\n";
-	cout << "#	update funcionario <Id>	        			- Altera o cadastro de um funcionário 			 #\n";
+	cout << "#	update funcionario <filtro> <campo> <Id> <valor>	        			- Altera o cadastro de um funcionário 			 #\n";
 	cout << "#	insert animal <filtro>  				- Insere um novo animal 				 #\n";
 	cout << "#	delete animal <Id>					- Deleta o cadastro de um animal 	 	 	 #\n";
-	cout << "#	update animal <Id>					- Altera o cadastro de um animal		 	 #\n";
+	cout << "#	update animal <filtro> <campo> <Id> <valor>				- Altera o cadastro de um animal		 	 #\n";
 	cout << "##########################################################################################################################\n";
 	cout << "#	filtros	funcionários					- Tratador, Veterinário					 #\n";
 	cout << "#	filtros	animais						- Anfíbio, Ave, Mamífero, Réptil			 #\n";
