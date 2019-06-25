@@ -44,18 +44,61 @@ class Anfibio: public Animal<Anfibio>{
 
 		~Anfibio();
 
+		/**
+		*
+		* @brief Mostra uma data na tela
+		* @return Nothing
+		* */
 		void 	showDate();
-		
+			
+
+		/**
+		*
+		* @brief Ler os atributos para preencher o objeto
+		* @return Nothing
+		* */
 		void	lerAtributos();
 
+		/**
+		*
+		* @brief Pega o numero total de mudas
+		* @return Int
+		* */
 		int		getTotalMudas();
+
+		/**
+		*
+		* @brief Pega uma data da ultima muda
+		* @return Data
+		* */
 		myDate	getUltimaMuda();
+		
+		/**
+		*
+		* @brief Transforma um tipo data em um tipo stirng
+		* @return String
+		* */
 		string	dateString(myDate data);
 		
+		/**
+		*
+		* @brief verifica se a data é válida
+		* @return bool
+		* */
 		bool	validaData(myDate data);
 	
+		/**
+		*
+		* @brief Altera para o ultima dia da muda
+		* @return Nothing
+		* */
 		void 	setUltimaMuda(myDate data);
 
+		/**
+		*
+		* @brief Preenche o objeto aprtir de um vetor de string
+		* @return Nothing
+		* */
 		void 	vsToClass(vector<string> linha);
 
 };
