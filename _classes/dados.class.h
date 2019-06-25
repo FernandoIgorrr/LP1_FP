@@ -230,6 +230,68 @@ class Dados {
 			}
 		}
 
+		void Delete(Class *c,string classe_base,int numero_campos,string id){
+
+			string oldFileName("_dados/"+classe_base+".csv");
+			string newFileName("_dados/"+classe_base+".csv.new");
+
+			ifstream arqDados(oldFileName.c_str());
+			ofstream newFile(newFileName.c_str(),std::ofstream::app);
+
+			if(arqDados.bad()) {
+				cerr << "o arquivo nao foi aberto" << endl;
+				//exit(1);
+			}
+			else if(!arqDados) {
+				cerr << "o arquivo nao foi aberto" << endl;
+				//exit(1);
+			}
+			else if(arqDados.is_open() == 0) {
+				cerr << "o arquivo nao foi aberto" << endl;
+				//exit(1);
+			}
+			else{
+				string line, aux;
+				vector<string> linha;
+				int c = 0;
+				while(arqDados.good()){
+					for(int i = 0;i < numero_campos;i++){
+						if(i < numero_campos - 1){
+							getline(arqDados,aux,';');	
+						}
+						else{
+							getline(arqDados,aux,'\n');
+						}
+						linha.push_back(aux);
+						aux.clear();
+					}
+					if(!linha[0].compare(id)){
+
+					}
+					else{
+						if(c > 0){
+							line += "\n";
+						}
+						for(int i = 0;i < (int)linha.size();i++){
+							line += linha[i];
+							if(i < (int)linha.size() - 1){
+								line += ";";
+							}					
+						}
+						newFile << line;
+					}
+					linha.clear();
+					line.clear();
+					c++;
+				}
+				newFile.close();
+				arqDados.close();
+				remove(oldFileName.c_str());
+				rename(newFileName.c_str(),oldFileName.c_str());					
+
+			}
+		}
+
 		/*template <class C>
 		map<string,C> 	getList();
 		void 			setList(string classe_base);

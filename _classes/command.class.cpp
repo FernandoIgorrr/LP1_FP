@@ -236,13 +236,18 @@ int Command::executeCommand(){
 		}
 		else if(!this->command[0].compare("delete")){
 			if(!this->command[1].compare("funcionario")){
-
-			}
+				Tratador *t = new Tratador();
+				t->Delete(t,"funcionarios",10,this->command[2]);
+				delete(t);
+				return 1;		}
 			else if(!this->command[1].compare("animal")){
-
+				Anfibio  *a = new Anfibio();
+				a->Delete(a,"animais",17,this->command[2]);
+				delete(a);
+				return 1;
 			}
 			else{
-
+				return 0;
 			}
 		}
 		else if(!this->command[0].compare("update")){
