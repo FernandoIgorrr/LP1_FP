@@ -6,8 +6,7 @@
  *
  *  @since 17-06-2019
  *  */
-
-class Tratador : public Funcionario{
+class Tratador : public Funcionario<Tratador>{
 
 	private:
 		int m_nivel_acesso;
@@ -24,7 +23,9 @@ class Tratador : public Funcionario{
 				 int	nivel_acesso);
 		~Tratador();
 
-		bool existeId(string dado);
+		void 	lerAtributos();
+		int 	getNivelAcesso();
+		bool	existeId(string dado);
 
 		
 

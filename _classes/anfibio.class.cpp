@@ -5,6 +5,7 @@
 *	*/
 
 Anfibio::Anfibio(){
+	this->initializeAtributes();
 	this->m_atributos.push_back("Total de Mudas");
 	this->m_atributos.push_back("Data da última muda");
 }
@@ -49,6 +50,10 @@ void Anfibio::lerAtributos(){
 		}
 		else{
 			cout << this->getAtributos()[i] << ": " << endl;
+			if(i != 11){
+				setbuf(stdin, NULL);
+    			getline(cin,dado);
+    		}
 		}
 		if(i == 11){
 			myDate data;
@@ -61,22 +66,23 @@ void Anfibio::lerAtributos(){
 
 			if(this->validaData(data)){
 				this->m_ultima_muda = data;
+				this->m_dados_obj.push_back(this->dateString(data));
 			}
 			else{
 				cout << "Dado inválido!" << endl;
 				i--;
 			}
 		}
-		else if(i == 1){
-
-		}
-		else{
-			setbuf(stdin, NULL);
-    		getline(cin,dado);
-		}
 		if(i == 0){
 			if(this->is_number(dado)){
-				this->m_id = stoi(dado);
+				if(!this->existeId(dado)){
+					this->m_id = stoi(dado);
+					this->m_dados_obj.push_back(dado);
+				}
+				else{
+					cout << "Já existe um animal com esse ID!\n";
+					i--;
+				}
 			}
 			else{
 				cout << "Dado inválido!" << endl;
@@ -85,16 +91,20 @@ void Anfibio::lerAtributos(){
 		}
 		else if(i == 1){
 			this->m_classe = {"Anfíbio"};
+			this->m_dados_obj.push_back("Anfíbio");
 		}
 		else if(i == 2){
 			this->m_nome_cientifico = dado;
+			this->m_dados_obj.push_back(dado);
 		}
 		else if(i == 3){
 			this->m_nome_batismo = dado;
+			this->m_dados_obj.push_back(dado);
 		}
 		else if(i == 4){
 			if(this->validaSexo(dado)){
 				this->m_sexo = dado.at(0);
+				this->m_dados_obj.push_back(dado);
 			}
 			else{
 				cout << "Dado inválido!" << endl;
@@ -104,6 +114,7 @@ void Anfibio::lerAtributos(){
 		else if(i == 5){
 			if(this->is_fp(dado)){
 				this->m_tamanho = stod(dado);
+				this->m_dados_obj.push_back(dado);
 			}
 			else{
 				cout << "Dado inválido!" << endl;
@@ -112,12 +123,14 @@ void Anfibio::lerAtributos(){
 		}
 		else if(i == 6){
 			this->m_dieta = dado;
+			this->m_dados_obj.push_back(dado);
 		}
 		else if(i == 7){
 			if(this->is_number(dado)){
 				Veterinario *v = new Veterinario();
 				if(v->existeId(dado) || !dado.compare("0")){
 					this->m_veterinario = stoi(dado);
+					this->m_dados_obj.push_back(dado);
 				}
 				else{
 					cout << "Não existe funcionário com esse ID!" << endl;
@@ -135,6 +148,7 @@ void Anfibio::lerAtributos(){
 				Tratador *t = new Tratador();
 				if(t->existeId(dado) || !dado.compare("0")){
 					this->m_tratador = stoi(dado);
+					this->m_dados_obj.push_back(dado);
 				}
 				else{
 					cout << "Não existe Funcionário com esse ID!" << endl;
@@ -150,6 +164,7 @@ void Anfibio::lerAtributos(){
 		else if(i == 9){
 			if(this->validaNativo(dado)){
 				this->m_nativo = this->toNativo(dado);
+				this->m_dados_obj.push_back(this->bool_cast(this->m_nativo));
 			}
 			else{
 				cout << "Dado inválido!" << endl;
@@ -159,6 +174,7 @@ void Anfibio::lerAtributos(){
 		else if(i == 10){
 			if(this->is_number(dado)){
 				this->m_total_mudas = stoi(dado);
+				this->m_dados_obj.push_back(dado);
 			}
 			else{
 				cout << "Dado inválido!" << endl;
@@ -167,37 +183,12 @@ void Anfibio::lerAtributos(){
 		}
 		dado.clear();
 	}
-}
+	this->m_dados_obj.push_back("-");
+	this->m_dados_obj.push_back("-");
+	this->m_dados_obj.push_back("-");
+	this->m_dados_obj.push_back("-");
+	this->m_dados_obj.push_back("-");
 
-
-void Anfibio::Insert(Anfibio *a){
-
-	ofstream arqDados("_dados/animais.csv",std::ofstream::app);
-
-	if(arqDados.bad()) {
-		cerr << "o arquivo nao foi aberto" << endl;
-		//exit(1);
-	}
-	else if(!arqDados) {
-		cerr << "o arquivo nao foi aberto" << endl;
-		//exit(1);
-	}
-	else if(arqDados.is_open() == 0) {
-		cerr << "o arquivo nao foi aberto" << endl;
-		//exit(1);
-	}
-	else{
-		string ch(" ");
-		ch.at(0) = a->getSexo();
-
-		arqDados << "\n" + to_string(a->getId())	+ ";" + a->getClasse() 						+ ";" + a->getNomeCientifico()			+ ";" 
-		+ a->getNomeBatismo()						+ ";" + ch 									+ ";" + to_string(a->getTamanho()) 		+ ";" 
-		+ a->getDieta() 							+ ";" + to_string(a->getVeterinarioId()) 	+ ";" + to_string(a->getTratadorId())	+ ";"
-		+ bool_cast(a->getNativo()) 				+ ";" + to_string(a->getTotalMudas()) 		+ ";"
-		+ a->dateString(a->getUltimaMuda()) 		+ ";" + "-" + ";" + "-" + ";" + "-" + ";" + "-" + ";" + "-";
-		
-		arqDados.close();
-	}
 }
 
 void Anfibio::showDate(){

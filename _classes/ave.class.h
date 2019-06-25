@@ -13,7 +13,7 @@ using namespace std;
  *  @since 17-06-2019
  *  */
 
-class Ave: public Animal{
+class Ave: public Animal<Ave>{
 
 	protected:
 		double m_tamanho_bico_cm;
@@ -37,8 +37,10 @@ class Ave: public Animal{
 			);
 		~Ave();
 
-		double			getTamanhoBico();
-		double			getEnvergaduraAsas();
+		void	lerAtributos();		
+
+		double	getTamanhoBico();
+		double	getEnvergaduraAsas();
 
 };
 

@@ -8,8 +8,7 @@
  *
  *  @since 17-06-2019
  *  */
-
-class Veterinario : public Funcionario{
+class Veterinario : public Funcionario<Veterinario>{
 
 	private:
 		string m_cmv;
@@ -27,6 +26,8 @@ class Veterinario : public Funcionario{
 		
 		~Veterinario();
 
+		void lerAtributos();
+		string getCmv();
 		bool existeId(string dado);
 
 		

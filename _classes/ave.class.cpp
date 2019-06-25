@@ -5,6 +5,7 @@
 *	*/
 
 Ave::Ave(){
+	this->initializeAtributes();
 	this->m_atributos.push_back("Tamanho do bico(CM)");
 	this->m_atributos.push_back("Envergadura das asas");
 }
@@ -44,7 +45,145 @@ Ave::~Ave(){
 double Ave::getTamanhoBico(){
 	return this->m_tamanho_bico_cm;
 }
-
 double Ave::getEnvergaduraAsas(){
 	return this->m_envergadura_asas;
+}
+
+void Ave::lerAtributos(){
+
+	string dado;
+	for(int i = 0; i < (int)this->getAtributos().size();++i){
+		if(i == 1){
+
+		}
+		else{
+			cout << this->getAtributos()[i] << ": " << endl;
+			setbuf(stdin, NULL);
+    		getline(cin,dado);
+		}
+		if(i == 0){
+			if(this->is_number(dado)){
+				if(!this->existeId(dado)){
+					this->m_id = stoi(dado);
+					this->m_dados_obj.push_back(dado);
+				}
+				else{
+					cout << "Já existe um animal com esse ID!\n";
+					i--;
+				}
+			}
+			else{
+				cout << "Dado inválido!" << endl;
+				i--;
+			}
+		}
+		else if(i == 1){
+			this->m_classe = {"Ave"};
+			this->m_dados_obj.push_back("Ave");
+		}
+		else if(i == 2){
+			this->m_nome_cientifico = dado;
+			this->m_dados_obj.push_back(dado);
+		}
+		else if(i == 3){
+			this->m_nome_batismo = dado;
+			this->m_dados_obj.push_back(dado);
+		}
+		else if(i == 4){
+			if(this->validaSexo(dado)){
+				this->m_sexo = dado.at(0);
+				this->m_dados_obj.push_back(dado);
+			}
+			else{
+				cout << "Dado inválido!" << endl;
+				i--;
+			}
+		}
+		else if(i == 5){
+			if(this->is_fp(dado)){
+				this->m_tamanho = stod(dado);
+				this->m_dados_obj.push_back(dado);
+			}
+			else{
+				cout << "Dado inválido!" << endl;
+				i--;
+			}
+		}
+		else if(i == 6){
+			this->m_dieta = dado;
+			this->m_dados_obj.push_back(dado);
+		}
+		else if(i == 7){
+			if(this->is_number(dado)){
+				Veterinario *v = new Veterinario();
+				if(v->existeId(dado) || !dado.compare("0")){
+					this->m_veterinario = stoi(dado);
+					this->m_dados_obj.push_back(dado);
+				}
+				else{
+					cout << "Não existe funcionário com esse ID!" << endl;
+					i--;	
+				}
+				delete(v);
+			}
+			else{
+				cout << "Dado inválido!" << endl;
+				i--;
+			}
+		}
+		else if(i == 8){
+			if(this->is_number(dado)){
+				Tratador *t = new Tratador();
+				if(t->existeId(dado) || !dado.compare("0")){
+					this->m_tratador = stoi(dado);
+					this->m_dados_obj.push_back(dado);
+				}
+				else{
+					cout << "Não existe Funcionário com esse ID!" << endl;
+					i--;
+				}
+				delete(t);
+			}
+			else{
+				cout << "Dado inválido!" << endl;
+				i--;
+			}
+		}
+		else if(i == 9){
+			if(this->validaNativo(dado)){
+				this->m_nativo = this->toNativo(dado);
+				this->m_dados_obj.push_back(this->bool_cast(this->m_nativo));
+				this->m_dados_obj.push_back("-");
+				this->m_dados_obj.push_back("-");
+			}
+			else{
+				cout << "Dado inválido!" << endl;
+				i--;
+			}
+		}
+		else if(i == 10){
+			if(this->is_fp(dado)){
+				this->m_tamanho_bico_cm = stod(dado);
+				this->m_dados_obj.push_back(dado);
+			}
+			else{
+				cout << "Dado inválido!" << endl;
+				i--;
+			}
+		}
+		else if(i == 11){
+			if(this->is_fp(dado)){
+				this->m_envergadura_asas = stod(dado);
+				this->m_dados_obj.push_back(dado);
+				this->m_dados_obj.push_back("-");
+				this->m_dados_obj.push_back("-");
+				this->m_dados_obj.push_back("-");
+			}
+			else{
+				cout << "Dado inválido!" << endl;
+				i--;
+			}
+		}
+		dado.clear();
+	}
 }

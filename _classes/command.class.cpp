@@ -179,10 +179,18 @@ int Command::executeCommand(){
 		if(!this->command[0].compare("insert")){
 			if(!this->command[1].compare("funcionario")){
 				if(!this->command[2].compare("Veterinário")){
-				
+					Veterinario *ve = new Veterinario();
+					ve->lerAtributos();
+					ve->Insert(ve,"funcionarios","Veterinário");
+					delete(ve);
+					return 1;
 				}
 				else if(!this->command[2].compare("Tratador")){
-				
+					Tratador *tr = new Tratador();
+					tr->lerAtributos();
+					tr->Insert(tr,"funcionarios","Tratador");
+					delete(tr);
+					return 1;
 				}
 				else{
 					return -3;
@@ -191,20 +199,32 @@ int Command::executeCommand(){
 			else if(!this->command[1].compare("animal")){
 				if(!this->command[2].compare("Anfíbio")){
 					
-					Anfibio *a = new Anfibio();
-					a->lerAtributos();
-					a->Insert(a);
-					delete(a);
+					Anfibio *an = new Anfibio();
+					an->lerAtributos();
+					an->Insert(an,"animais","Ave");
+					delete(an);
 					return 1;
 				}
 				else if(!this->command[2].compare("Ave")){
-				
+					Ave *av = new Ave();
+					av->lerAtributos();
+					av->Insert(av,"animais","Ave");
+					delete(av);
+					return 1;
 				}
 				else if(!this->command[2].compare("Mamífero")){
-				
+					Mamifero *ma = new Mamifero();
+					ma->lerAtributos();
+					ma->Insert(ma,"animais","Mamífero");
+					delete(ma);
+					return 1;
 				}
 				else if(!this->command[2].compare("Réptil")){
-				
+					Reptil *re = new Reptil();
+					re->lerAtributos();
+					re->Insert(re,"animais","Réptil");
+					delete(re);
+					return 1;
 				}
 				else{
 					return -4;
@@ -241,6 +261,7 @@ int Command::executeCommand(){
 				if(!this->command[2].compare("Tratador")){
 					Tratador 	*t 	= new Tratador();
 					t->makeList("funcionarios",10);
+					this->clear();
 					t->showAtributos();
 					t->showList("Tratador");
 					delete(t);
@@ -248,7 +269,8 @@ int Command::executeCommand(){
 				}
 				else if(!this->command[2].compare("Veterinário")){
 					Veterinario *v 	= new Veterinario();
-					v->makeList("funcionarios",10);					
+					v->makeList("funcionarios",10);
+					this->clear();			
 					v->showAtributos();
 					v->showList("Veterinário");
 					delete(v);
@@ -258,6 +280,7 @@ int Command::executeCommand(){
 			else if(!this->command[1].compare("animais")){
 				if(!this->command[2].compare("Anfíbio")){
 					Anfibio 	*an = new Anfibio();
+					this->clear();
 					an->makeList("animais",17);
 					an->showAtributos();
 					an->showList("Anfíbio");					
@@ -266,7 +289,9 @@ int Command::executeCommand(){
 				}
 				else if(!this->command[2].compare("Ave")){
 					Ave 		*av = new Ave();
+					this->clear();
 					av->makeList("animais",17);		
+					this->clear();
 					av->showAtributos();
 					av->showList("Ave");					
 					delete(av);
@@ -275,6 +300,7 @@ int Command::executeCommand(){
 				else if(!this->command[2].compare("Mamífero")){
 					Mamifero 	*ma = new Mamifero();
 					ma->makeList("animais",17);					
+					this->clear();
 					ma->showAtributos();
 					ma->showList("Mamífero");
 					delete(ma);
@@ -283,6 +309,7 @@ int Command::executeCommand(){
 				else if(!this->command[2].compare("Réptil")){
 					Reptil 		*re = new Reptil();
 					re->makeList("animais",17);					
+					this->clear();
 					re->showAtributos();
 					re->showList("Réptil");			
 					delete(re);

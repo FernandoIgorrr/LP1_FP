@@ -2,7 +2,6 @@
 #define ANFIBIO_CLASS_H_INCLUDED
  
 #include "animal.class.h"
-#include "../_structs/data.struct.h"
 #include <string>
 
 using namespace std;
@@ -14,7 +13,7 @@ using namespace std;
  *  @since 17-06-2019
  *  */
 
-class Anfibio: public Animal{
+class Anfibio: public Animal<Anfibio>{
 
 	protected:
 		int		m_total_mudas;
@@ -38,19 +37,17 @@ class Anfibio: public Animal{
 				);
 
 		~Anfibio();
-		
-		void 	Insert(Anfibio *a);
 
 		void 	showDate();
-
+		
 		void	lerAtributos();
 
 		int		getTotalMudas();
-
-		bool	validaData(myDate data);
 		myDate	getUltimaMuda();
 		string	dateString(myDate data);
-
+		
+		bool	validaData(myDate data);
+	
 		void 	setUltimaMuda(myDate data);
 
 		void 	vsToClass(vector<string> linha);

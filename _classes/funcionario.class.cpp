@@ -1,49 +1,36 @@
 #include "funcionario.class.h"
 
-Funcionario::Funcionario(){
-	this->m_atributos.push_back("Id");
-	this->m_atributos.push_back("Nome");
-	this->m_atributos.push_back("CPF");
-	this->m_atributos.push_back("Idade");
-	this->m_atributos.push_back("Tipo sanguíneo");
-	this->m_atributos.push_back("Fator RH");
-	this->m_atributos.push_back("Especialidade");
-}
-
-Funcionario::~Funcionario(){
-	
-}
-
 /**
 *
 *Funções get
 *
 *  */
-int		Funcionario::getId(){
+template<class Class>
+int		Funcionario<Class>::getId(){
 	return this->m_id;
 }
-
-string	Funcionario::getNome(){
+template<class Class>
+string	Funcionario<Class>::getNome(){
 	return this->m_nome;
 }
-
-string	Funcionario::getCpf(){
+template<class Class>
+string	Funcionario<Class>::getCpf(){
 	return this->m_cpf;
 }
-
-short	Funcionario::getIdade(){
+template<class Class>
+short	Funcionario<Class>::getIdade(){
 	return this->m_idade;
 }
-
-string	Funcionario::getTipoSanguineo(){
+template<class Class>
+string	Funcionario<Class>::getTipoSanguineo(){
 	return this->m_tipo_sanguineo;
 }
-
-char	Funcionario::getFatorRh(){
+template<class Class>
+char	Funcionario<Class>::getFatorRh(){
 	return this->m_fator_rh;
 }
-
-string	Funcionario::getEspecialidade(){
+template<class Class>
+string	Funcionario<Class>::getEspecialidade(){
 	return this->m_especialidade;
 }
 		
@@ -52,30 +39,37 @@ string	Funcionario::getEspecialidade(){
 *Funções set
 *
 *  */
-void Funcionario::setId(int id){
+template<class Class>
+void Funcionario<Class>::setId(int id){
 	this->m_id = id;
 }
 
-void Funcionario::setNome(string nome){
+template<class Class>
+void Funcionario<Class>::setNome(string nome){
 	this->m_nome = nome;
 }
 
-void Funcionario::setCpf(string cpf){
+template<class Class>
+void Funcionario<Class>::setCpf(string cpf){
 	this->m_cpf = cpf;
 }
 
-void Funcionario::setIdade(short idade){
+template<class Class>
+void Funcionario<Class>::setIdade(short idade){
 	this->m_idade = idade;
 }
 
-void Funcionario::setTipoSanguineo(string tipo_sanguineo){
+template<class Class>
+void Funcionario<Class>::setTipoSanguineo(string tipo_sanguineo){
 	this->m_tipo_sanguineo = tipo_sanguineo;
 }
 
-void Funcionario::setFatorRh(char fator_rh){
+template<class Class>
+void Funcionario<Class>::setFatorRh(char fator_rh){
 	this->m_fator_rh = fator_rh;
 }
 
-void Funcionario::setEspecialidade(string especialidade){
+template<class Class>
+void Funcionario<Class>::setEspecialidade(string especialidade){
 	this->m_especialidade = especialidade;
 }

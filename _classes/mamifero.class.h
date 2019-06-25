@@ -13,7 +13,7 @@ using namespace std;
  *  @since 17-06-2019
  *  */
 
-class Mamifero: public Animal{
+class Mamifero: public Animal<Mamifero>{
 
 	protected:
 		string m_cor_pelo;	
@@ -36,7 +36,10 @@ class Mamifero: public Animal{
 		
 		~Mamifero();
 		
-		string 			getCorPelo();
+		string 	getCorPelo();
+
+		void 	lerAtributos();
+
 
 };
 

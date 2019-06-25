@@ -1,7 +1,4 @@
-1;Mamífero;Panthera leo × Panthera tigris;akandor;M;3.12;Carne;0;0;0;-;-;-;-;Marron;-;-
-2;Anfíbio;Sapao;akandor;M;3.12;Carne;0;0;0;10;22/5/2013;-;-;-;-;-
-3;Mamífero;Panthera leo × Panthera tigris;akandor;M;3.12;Carne;0;0;0;-;-;-;-;Marron;-;-
-4;Ave;Passarim;seila;F;1.12;sla;0;0;0;-;-;2.2;3.14;-;-;-
-1;Réptil;Panthera leo × Panthera tigris;akandor;M;3.12;Carne;0;0;0;-;-;-;-;-;1;Mortal
-341;Ave;Passarim;akandor;M;3.12;Carne;0;0;0;-;-;3.12;34.1;-;-;-
-666;Anfíbio;babalu;asdasd;M;3.120000;asdasd;1;2;false;12;11/11/2011;-;-;-;-;-
+65748;Ave;Picidae;Pica-Pau;M;0.17;Insetos;0;0;true;-;-;2;0.15;-;-;-
+75648;Réptil;Hemidactylus mabouia;largarixa;F;0.10;Insetos;0;0;true;-;-;-;-;-;false;-
+7777;Réptil;Crocodylidae;verdin;M;3.15;Carne;0;0;false;-;-;-;-;-;false;-
+56;Mamífero;Mammuthus;mamutinho;M;4;Mato;0;0;false;-;-;-;-;Marrom;-;-

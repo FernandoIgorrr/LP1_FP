@@ -13,7 +13,7 @@ using namespace std;
  *  @since 17-06-2019
  *  */
 
-class Reptil: public Animal{
+class Reptil: public Animal<Reptil>{
 
 	protected:
 		bool 	m_venenoso;
@@ -37,8 +37,10 @@ class Reptil: public Animal{
 				);
 		~Reptil();
 		
-		bool 			getVenenoso();
-		string 			getTipoVeneno();
+		bool 	getVenenoso();
+		string 	getTipoVeneno();
+
+		void 	lerAtributos();
 
 };
 

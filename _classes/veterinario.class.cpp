@@ -27,6 +27,10 @@ Veterinario::~Veterinario(){
 
 }
 
+string Veterinario::getCmv(){
+	return this->m_cmv;
+}
+
 bool Veterinario::existeId(string dado){
 	this->makeList("funcionarios",10);
 	for(auto elem : this->m_dados){
@@ -39,4 +43,91 @@ bool Veterinario::existeId(string dado){
 		}
 	}
 	return false;
+}
+
+void Veterinario::lerAtributos(){
+
+	string dado;
+	for(int i = 0; i < (int)this->getAtributos().size();++i){
+
+		cout << this->getAtributos()[i] << ": " << endl;
+		setbuf(stdin, NULL);
+		getline(cin,dado);
+
+		if(i == 0){
+			if(this->is_number(dado)){
+				if(!this->existeId(dado)){
+					this->m_id = stoi(dado);
+					this->m_dados_obj.push_back(dado);
+				}
+				else{
+					cout << "Já existe um funcionário com esse ID!\n";
+					i--;
+				}
+			}
+			else{
+				cout << "Dado inválido!" << endl;
+				i--;
+			}
+		}
+		else if(i == 1){
+			this->m_nome = dado;
+			this->m_dados_obj.push_back("Veterinário");
+			this->m_dados_obj.push_back(dado);
+		}
+		else if(i == 2){
+			if(this->validaCpf(dado)){
+				this->m_cpf = dado;
+				this->m_dados_obj.push_back(dado);
+			}
+			else{
+				cout << "CPF Inválido!" << endl;
+				i--;
+			}
+		}
+		else if(i == 3){
+			if(this->is_number(dado)){
+				this->m_idade = stoi(dado);
+				this->m_dados_obj.push_back(dado);
+			}
+			else{
+				cout << "Dado inválido!" << endl;
+				i--;	
+			}
+		}
+		else if(i == 4){
+			if(this->validaTipoSanguineo(dado)){
+				this->m_tipo_sanguineo = dado;
+				this->m_dados_obj.push_back(dado);
+			}
+			else{
+				cout << "Dado inválido!" << endl;
+				i--;
+			}
+		}
+		else if(i == 5){
+			if(this->validaFatorRh(dado)){
+				this->m_fator_rh = dado.at(0);
+				this->m_dados_obj.push_back(dado);
+			}
+			else{
+				cout << "Dado inválido!" << endl;
+				i--;
+			}
+		}
+		else if(i == 6){
+			this->m_especialidade = dado;
+			this->m_dados_obj.push_back(dado);
+		}
+		else if(i == 7){
+			this->m_especialidade = dado;
+			this->m_dados_obj.push_back(dado);
+		}
+		else if(i == 8){
+			this->m_cmv = dado;
+			this->m_dados_obj.push_back(dado);
+			this->m_dados_obj.push_back("-");
+		}
+		dado.clear();
+	}
 }
